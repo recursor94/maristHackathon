@@ -28,22 +28,22 @@ function printLocations(){
 function callbackTen(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 	for (var i = 0; i < 10; i++) {
-//	    console.log(dynamicID);
+	    //dynamicID is 'output'
 	    dynamicID += i;
-//	    console.log(dynamicID);
+	    //dynamicID is 'output' += i
 	    addresses.push(results[i].formatted_address);
 
 	    output.value += results[i].name + "\n";
 	    dynamicID.value = results[i].name;
-	    console.log(dynamicID);
+//	    console.log(dynamicID.value);
 
-
+/*
 	    removedUS = removingExtraUS(results[i].formatted_address) + "\n";
 	    formattedAddress.push(removedUS);
 
 	    output.value += removedUS;
 //	    dynamicID.value = removedUS;
-
+*/
 	    dynamicID = dynamicID.substring(0,6);
 	}
     }
