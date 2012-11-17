@@ -28,21 +28,17 @@ function printLocations(){
 function callbackTen(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 	for (var i = 0; i < 10; i++) {
-	    //    console.log(dynamicID);
 	    dynamicID += i;
-	    //    console.log(dynamicID);
 	    addresses.push(results[i].formatted_address);
 
-	    output.value += results[i].name + "\n";
-	    document.getElementById(dynamicID).value = results[i].name;
-	    console.log(dynamicID);
-
+//	    output.value += results[i].name + "\n";
+	    document.getElementById(dynamicID).value += results[i].name + "\n";
 
 	    removedUS = removingExtraUS(results[i].formatted_address) + "\n";
 	    formattedAddress.push(removedUS);
 
-	    output.value += removedUS;
-	    //    dynamicID.value = removedUS;
+//	    output.value += removedUS;
+	    document.getElementById(dynamicID).value += removedUS;
 
 	    dynamicID = dynamicID.substring(0,6);
 	}
@@ -65,22 +61,13 @@ function changeValue(value){
 	textRequest.query = value;
 	input.value = "";
     }
-    output.value = "";
+  //  output.value = "";
     for(var i = 0; i < 10; i++){
 	dynamicID += i;
-	//dynamicID.value = "";
 	dynamicID = dynamicID.substring(0,6);
     }
     printLocations();
 }
-
-/*
-function dynamicIDChanger(i){ //use with a for loop [0,10)
-    dynamicID += i;
-//    console.log(dynamicID);
-    dynamicID = dynamicID.substring(0,6);
-    }
-*/
 
 function doClick(buttonName,e){
   //the purpose of this function is to allow the enter key to 
