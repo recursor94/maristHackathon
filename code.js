@@ -28,9 +28,9 @@ function printLocations(){
 function callbackTen(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 	for (var i = 0; i < 10; i++) {
-//	    console.log(dynamicID);
+	    //    console.log(dynamicID);
 	    dynamicID += i;
-//	    console.log(dynamicID);
+	    //    console.log(dynamicID);
 	    addresses.push(results[i].formatted_address);
 
 	    output.value += results[i].name + "\n";
@@ -42,7 +42,7 @@ function callbackTen(results, status) {
 	    formattedAddress.push(removedUS);
 
 	    output.value += removedUS;
-//	    dynamicID.value = removedUS;
+	    //    dynamicID.value = removedUS;
 
 	    dynamicID = dynamicID.substring(0,6);
 	}
@@ -68,7 +68,7 @@ function changeValue(value){
     output.value = "";
     for(var i = 0; i < 10; i++){
 	dynamicID += i;
-//	dynamicID.value = "";
+	//dynamicID.value = "";
 	dynamicID = dynamicID.substring(0,6);
     }
     printLocations();
