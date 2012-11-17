@@ -7,7 +7,7 @@ var textRequest = {
 }; //default request object, searches for query in a 500m radius around marist
 var addresses = [];
 var formattedAddress = [];
-var dynamicID = 'output';
+var dynamicID = "output";
 
 //initializes map
 function initialize() {
@@ -34,7 +34,7 @@ function callbackTen(results, status) {
 	    addresses.push(results[i].formatted_address);
 
 	    output.value += results[i].name + "\n";
-	    dynamicID.value = results[i].name;
+	    document.getElementById(dynamicID).value = results[i].name;
 	    console.log(dynamicID);
 
 
