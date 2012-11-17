@@ -36,10 +36,10 @@ function callbackTen(results, status) {
 
 	    removedUS = removingExtraUS(results[i].formatted_address) + "\n";
 	    formattedAddress.push(removedUS);
-
-//	    output.value += removedUS;
 	    document.getElementById(dynamicID).value += removedUS;
 
+//	    console.log(addresses[i]);
+//	    console.log(formattedAddress[i]);
 	    dynamicID = dynamicID.substring(0,6);
 	}
     }
@@ -87,6 +87,11 @@ function doClick(buttonName,e){
             ev.preventDefault(); 
 	}
     }
+}
+
+function getDirections(){
+
+
 }
 
 window.onload = function() {
