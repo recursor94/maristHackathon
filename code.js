@@ -21,45 +21,37 @@ function initialize() {
 //prints out the top ten location
 function printLocations(){
     var service = new google.maps.places.PlacesService(map);
-    service.textSearch(textRequest, callbackTen);
-//    document.getElementById(dynamicID).write("test");	
-    
+    service.textSearch(textRequest, callbackTen); 
 }
 
 //helper function to printLocation()
 function callbackTen(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 	for (var i = 0; i < 10; i++) {
+	    console.log(dynamicID);
+	    dynamicID += i;
+	    console.log(dynamicID);
 	    addresses.push(results[i].formatted_address);
-	    output.value += results[i].name + "\n";
 
-//	    console.log("addresses " + i + ":" + addresses[i]);
+	    output.value += results[i].name + "\n";
+//	    dynamicID.value = results[i].name;
+//	    console.log(dynamicID.value);
+
+	    dynamicID.value = "test"; //dynamicID is not defined?
+	    
 
 	    removedUS = removingExtraUS(results[i].formatted_address) + "\n";
 	    formattedAddress.push(removedUS);
 
+//	    console.log(formattedAddress[i]);
 	    output.value += removedUS;
-//	    console.log("formattedAddress " + i + ":" + formattedAddress[i]);
+//	    dynamicID.value += removedUS;
+
+	    dynamicID = dynamicID.substring(0,6);
 	}
     }
 }
-/*
-//original printLocations, prints out every location found
-function printAllLocations(){
-    var service = new google.maps.places.PlacesService(map);
-    service.textSearch(textRequest, callback);
-}
 
-//original helper function
-function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-	for (var i = 0; i < results.length; i++) {
-            output.value += results[i].name + "\n";
-	    output.value += removingExtraUS(results[i].formatted_address) + "\n";
-        }
-    }
-}
-*/
 //cuts off the NY, United States in the address, returns the address with out it
 function removingExtraUS(original){
 	var temp = original;
@@ -77,12 +69,23 @@ function changeValue(value){
 	input.value = "";
     }
     output.value = "";
-    //formattedAddress[i] = "";
+    for(var i = 0; i < 10; i++){
+	dynamicID += i;
+	dynamicID.value = "";
+	dynamicID = dynamicID.substring(0,6);
+    }
     printLocations();
 }
 
-function doClick(buttonName,e)
-{
+/*
+function dynamicIDChanger(i){ //use with a for loop [0,10)
+    dynamicID += i;
+//    console.log(dynamicID);
+    dynamicID = dynamicID.substring(0,6);
+}
+*/
+
+function doClick(buttonName,e){
   //the purpose of this function is to allow the enter key to 
   //point to the correct button to click.
     var ev = e || window.event;
