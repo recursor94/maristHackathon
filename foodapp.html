@@ -11,7 +11,41 @@
 	</head>
 
 	<body>
+	<textarea rows= "10" cols="80" id = "test">
+	</textarea>
 	
+	<input type="button"
+			value="test"
+			onclick="buttonTest()"
+	>
+	
+	<div id="target">
+  Click here
+	</div>
+<div id="other">
+  Trigger the handler
+</div>
+	
+	<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script>
+$("#target").click(function() {
+  alert("Handler for .click() called.");
+});
+	
+	function buttonTest(){
+
+	console.log("before");
+var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=41.722667,-73.934256&radius=500&types=food&sensor=false&key=AIzaSyCjbp32tQBOwSaU0g65BYpM30ezLQ93dxQ';
+$.get(url, function(data){
+console.log("GOT HERE");
+alert(data.next)}, "json");
+
+
+}
+	
+	
+	</script>
 	<script src="code.js"></script> 
 
 	</body>
