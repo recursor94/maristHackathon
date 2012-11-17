@@ -5,7 +5,10 @@ var textRequest = {
 		query: "food",
         radius: "500",
         }; //default request object, searches for query in a 500m radius around marist
-		
+var addresses = [];		
+var formattedAddress = [];
+var dynamicID = 'output';
+
 //initializes map		
 function initialize() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -19,18 +22,28 @@ function initialize() {
 function printLocations(){
     var service = new google.maps.places.PlacesService(map);
     service.textSearch(textRequest, callbackTen);
+//    document.getElementById(dynamicID).write("test");	
+    
 }
 
 //helper function to printLocation()
 function callbackTen(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-		for (var i = 0; i < 10; i++) {
-        output.value += results[i].name + "\n";
-		output.value += removingExtraUS(results[i].formatted_address) + "\n";
-        }
+	for (var i = 0; i < 10; i++) {
+	    addresses.push(results[i].formatted_address);
+	    output.value += results[i].name + "\n";
+
+//	    console.log("addresses " + i + ":" + addresses[i]);
+
+	    removedUS = removingExtraUS(results[i].formatted_address) + "\n";
+	    formattedAddress.push(removedUS);
+
+	    output.value += removedUS;
+//	    console.log("formattedAddress " + i + ":" + formattedAddress[i]);
+	}
     }
 }
-
+/*
 //original printLocations, prints out every location found
 function printAllLocations(){
     var service = new google.maps.places.PlacesService(map);
@@ -40,13 +53,13 @@ function printAllLocations(){
 //original helper function
 function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-		for (var i = 0; i < results.length; i++) {
-        output.value += results[i].name + "\n";
-		output.value += removingExtraUS(results[i].formatted_address) + "\n";
+	for (var i = 0; i < results.length; i++) {
+            output.value += results[i].name + "\n";
+	    output.value += removingExtraUS(results[i].formatted_address) + "\n";
         }
     }
 }
-
+*/
 //cuts off the NY, United States in the address, returns the address with out it
 function removingExtraUS(original){
 	var temp = original;
@@ -59,12 +72,13 @@ function removingExtraUS(original){
 
 //checks if there is an input. if there is one, then it searches and prints out the results
 function changeValue(value){
-	if (value != ""){
-		textRequest.query = value;
-		input.value = "";
-	}
-	output.value = "";
-	printLocations();
+    if (value != ""){
+	textRequest.query = value;
+	input.value = "";
+    }
+    output.value = "";
+    //formattedAddress[i] = "";
+    printLocations();
 }
 
 function doClick(buttonName,e)
