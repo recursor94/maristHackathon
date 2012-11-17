@@ -8,48 +8,21 @@
     <style>
     </style>
 
-    <script>
-      var map;
-      var infowindow;
-
-      function initialize() {
-        var marist = new google.maps.LatLng(41.722667,-73.934256);
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          center: marist,
-          zoom: 15
-        });
-
-        var request = {
-          location: marist,
-          radius: 500,
-          types: ['food']
-        };
-        var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, callback);
-      }
-
-      function callback(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            console.log(results[i].name);
-          }
-        }
-      }
-
-      google.maps.event.addDomListener(window, 'load', initialize);
+    <script src="code.js">
     </script>
   </head>
   <body>
     <div id="map"></div>
-    <div id="text">
-      <pre>
-var request = {
-  location: new google.maps.LatLng(-33.8665433, 151.1956316),
-  radius: 500,
-  types: ['food']
-};
-      </pre>
+	What would you like to eat?
+	<textarea id="input"></textarea>
+	<input  type="button"
+			value="Submit"
+			onClick="changeValue(input.value);"
+			>
+<!--	<input  type="button"
+			value="Print"
+			onClick="printLocations();"
+			>	-->
+	
   </body>
 </html>
