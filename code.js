@@ -67,4 +67,34 @@ function changeValue(value){
 	printLocations();
 }
 
+function doClick(buttonName,e)
+{
+  //the purpose of this function is to allow the enter key to 
+  //point to the correct button to click.
+    var ev = e || window.event;
+    var key = ev.keyCode;
+
+    if (key == 13)
+    {
+//	alert("key is enter");
+    //Get the button the user wants to have clicked
+	var btn = document.getElementById('button');
+	if (btn != null)
+	{ 
+        //If we find the button click it
+            btn.click();
+            ev.preventDefault(); 
+	}
+    }
+}
+
+window.onload = function() {
+//    document.getElementById('button').onclick = changeValue(input.value);
+    document.getElementById('input').onkeypress = function(e) {
+	doClick('button', e);
+    };
+
+};
+
 google.maps.event.addDomListener(window, "load", initialize);
+
