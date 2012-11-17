@@ -1,51 +1,55 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<!-- Marist hackathon -->
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<meta name="author"             content="Stanley Yang" />
-		<title>Food App</title>
-	</head>
+  <head>
+    <meta charset="utf-8">
+    <title>Google Maps JavaScript API v3 Example: Place Search</title>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
-	<body>
-	<textarea rows= "10" cols="80" id = "test">
-	</textarea>
-	
-	<input type="button"
-			value="test"
-			onclick="buttonTest()"
-	>
-	
-	<div id="target">
-  Click here
-	</div>
-<div id="other">
-  Trigger the handler
-</div>
-	
-	<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script> -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-	<script>
-$("#target").click(function() {
-  alert("Handler for .click() called.");
-});
-	
-	function buttonTest(){
+    <style>
+    </style>
 
-	console.log("before");
-var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=41.722667,-73.934256&radius=500&types=food&sensor=false&key=AIzaSyCjbp32tQBOwSaU0g65BYpM30ezLQ93dxQ";
-//var url = "test.json";
-$.getJSON(url, function(data){
-console.log(data.status);
-//console.log(data.next_page_token);
-});
+    <script>
+      var map;
+      var infowindow;
 
-console.log("GOT OUT");
-}
-	
-	
-	</script>
-	<script src="code.js"></script> 
+      function initialize() {
+        var marist = new google.maps.LatLng(41.722667,-73.934256);
 
-	</body>
+        map = new google.maps.Map(document.getElementById('map'), {
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          center: marist,
+          zoom: 15
+        });
+
+        var request = {
+          location: marist,
+          radius: 500,
+          types: ['food']
+        };
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+      }
+
+      function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            console.log(results[i].name);
+          }
+        }
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="text">
+      <pre>
+var request = {
+  location: new google.maps.LatLng(-33.8665433, 151.1956316),
+  radius: 500,
+  types: ['food']
+};
+      </pre>
+  </body>
 </html>
