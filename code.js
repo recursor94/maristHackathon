@@ -35,7 +35,6 @@ function callbackTen(results, status) {
 
 	    output.value += results[i].name + "\n";
 	    //    dynamicID.value = results[i].name;
-	    //    console.log(dynamicID.value);
 
 	    dynamicID.value = "test"; //dynamicID is not defined?
 
@@ -43,9 +42,9 @@ function callbackTen(results, status) {
 	    removedUS = removingExtraUS(results[i].formatted_address) + "\n";
 	    formattedAddress.push(removedUS);
 
-	    //    console.log(formattedAddress[i]);
+
 	    output.value += removedUS;
-	    //    dynamicID.value += removedUS;
+	        //    dynamicID.value += removedUS;
 
 	    dynamicID = dynamicID.substring(0,6);
 	}
@@ -71,7 +70,7 @@ function changeValue(value){
     output.value = "";
     for(var i = 0; i < 10; i++){
 	dynamicID += i;
-	dynamicID.value = "";
+//	dynamicID.value = "";
 	dynamicID = dynamicID.substring(0,6);
     }
     printLocations();
