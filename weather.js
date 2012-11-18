@@ -8,13 +8,13 @@ function topRight(){
                 document.getElementById("topRight").innerHTML = "The current weather is " + ob.weather.toLowerCase() + " and is " + ob.tempF + " F";
 			    {
 			    if(ob.tempF < 40){
-					document.getElementById("topRight").innerHTML += "<br> It is too cold to go to class. Stay in and get delivery";
+					document.getElementById("topRight").innerHTML += "<br> It is too cold to go to class. Stay in and get delivery <br>";
 				}
 			    else if(ob.tempF > 70) {
-					document.getElementById("topRight").innerHTML += "<br> It is too hot to go to class. Stay in and get delivery";
+					document.getElementById("topRight").innerHTML += "<br> It is too hot to go to class. Stay in and get delivery <br>";
 				}
 			    else
-					document.getElementById("topRight").innerHTML += "<br> It is a nice day outside. Why not cut class, go out for a nice walk, and get a good meal?";
+					document.getElementById("topRight").innerHTML += "<br> It is a nice day outside. Why not cut class, go out for a nice walk, and get a good meal? <br>";
 				}
 			}
 		}

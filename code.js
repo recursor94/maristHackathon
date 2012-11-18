@@ -159,6 +159,7 @@ window.onload = function() {
 	document.getElementById("info" + i).style.display = 'none';
 	dynamicInfo = dynamicInfo.substring(0,4);
     }
+	topRight();
 };
 
 google.maps.event.addDomListener(window, "load", initialize);
