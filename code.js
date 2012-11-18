@@ -1,6 +1,5 @@
 var map;
 var marist = new google.maps.LatLng(41.722667,-73.934256); //roughly the center of marist
-
 var textRequest = {
     location: marist,
     query: "food",
@@ -12,16 +11,17 @@ var dynamicInfo = "info";
 var placeArray = [];
 var searched = false;
 
-function place (rating, phone, website, types){
+function place (phone, rating, types, website, reference){
+    this.phone = phone;
     if(rating == 0){
 	this.rating = "Not rated";
     }
     else{
 	this.rating = rating + "/5";
     }
-    this.phone = phone;
-    this.website = website;
     this.types = types;
+    this.website = website;
+    this.reference = reference;
 }
 
 //initializes map
@@ -54,29 +54,22 @@ function callbackTen(results, status) {
 	    removedUS = removingExtraUS(results[i].formatted_address) + "\n";
 	    formattedAddress.push(removedUS);
 	    document.getElementById(dynamicID).value += removedUS;
-	    
-	    var r = 0;
 	    var p = "Not given";
-	    var w = "Not given";
+	    var r = 0
 	    var t = "Not given";
+	    var w = "Not given";
+	    var ref = "";
 
-	    if(results[i].rating != undefined) r = results[i].rating;
-	    if(results[i].phone != undefined) p = results[i].phone;
-	    if(results[i].website != undefined) w = results[i].website;
-	    if(results[i].types != undefined) t = results[i].types;
-	    var temp = new place(r, p, w, t);
-	    placeArray.push(temp);
-
+	    if(results[i].phone != undefined) p = results[i].formatted_phone_number;
 
 //	    console.log(results[i]);
-//            console.log(results[i].types);//gives an array of it's tags
-//	    if(results[i].opening_hours != undefined){
-//		console.log("opening now: " + results[i].opening_hours.open_now);//returns if open now or not
-//	    }
-//	    console.log("rating: " + results[i].rating);
-//	    console.log("formatted address: " + results[i].formatted_address);
-//	    console.log("website: " + results[i].website);
 
+	    if(results[i].rating != undefined) r = results[i].rating;
+	    if(results[i].types != undefined) t = results[i].types;
+	    if(results[i].website != undefined) w = results[i].website;
+	    ref = results[i].reference;
+	    var temp = new place(p, r, t, w, ref);
+	    placeArray.push(temp);
 
 	    dynamicID = dynamicID.substring(0,6);
 	}
@@ -96,12 +89,14 @@ function moreInfo(index,id){
 	}
 	element.value = "";
 
-	element.value += "Tags: " + placeArray[index].types + "\n";
+//	element.value += "Phone Number: " + placeArray[index].phone + "\n";
 	element.value += "Rating: " + placeArray[index].rating + "\n";	
+	element.value += "Tags: " + placeArray[index].types + "\n";
+//	element.value += "Website: " + placeArray[index].website + "\n";
     }
 }
 
-//cuts off the NY, United States in the address, returns the address with out it
+//cuts off the NY, United States in the address, returns the address without it
 function removingExtraUS(original){
     var temp = original;
     for(var i=1; i < original.length; i++){
@@ -122,11 +117,6 @@ function changeValue(value){
 	document.getElementById(dynamicID).value = ""; //clears the field for the next search
 	dynamicID = dynamicID.substring(0,6);
     }
-    for(var i = 0; i < 10; i++){
-	dynamicID += i;
-	dynamicID = dynamicID.substring(0,6);
-    }
-
     //close "more info" before showing new results
     for(var i = 0; i < 10; i++){
 	dynamicInfo += i;
