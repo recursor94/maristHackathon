@@ -10,16 +10,19 @@ var formattedAddress = [];
 var dynamicID = "output";
 var dynamicBtn = "outputbtn";
 var dynamicInfo = "info";
-var info = {
-    rating: null,
-    phone: "not given",
-    website: "not given",
-};
 var placeArray = [];
-function place (rating, phone, website){
-    this.rating = rating;
+var searched = false;
+
+function place (rating, phone, website, types){
+    if(rating == 0){
+	this.rating = "Not rated";
+    }
+    else{
+	this.rating = rating + "/5";
+    }
     this.phone = phone;
     this.website = website;
+    this.types = types;
 }
 
 //initializes map
@@ -53,25 +56,25 @@ function callbackTen(results, status) {
 	    var r = 0;
 	    var p = "Not given";
 	    var w = "Not given";
-	  
+	    var t = "Not given";
+
 	    if(results[i].rating != undefined) r = results[i].rating;
 	    if(results[i].phone != undefined) p = results[i].phone;
 	    if(results[i].website != undefined) w = results[i].website;
-
-	    var temp = new place(r, p, w);
+	    if(results[i].types != undefined) t = results[i].types;
+	    var temp = new place(r, p, w, t);
 	    placeArray.push(temp);
 
-	    console.log("rating: " + results[i].rating);
-/*
-	    console.log(results[i]);
-            console.log(results[i].types);//gives an array of it's tags
-	    if(results[i].opening_hours != undefined){
-		console.log("opening now: " + results[i].opening_hours.open_now);//returns if open now or not
-	    }
-	    console.log("rating: " + results[i].rating);
-	    console.log("formatted address: " + results[i].formatted_address);
-	    console.log("website: " + results[i].website);
-*/
+
+//	    console.log(results[i]);
+//            console.log(results[i].types);//gives an array of it's tags
+//	    if(results[i].opening_hours != undefined){
+//		console.log("opening now: " + results[i].opening_hours.open_now);//returns if open now or not
+//	    }
+//	    console.log("rating: " + results[i].rating);
+//	    console.log("formatted address: " + results[i].formatted_address);
+//	    console.log("website: " + results[i].website);
+
 
 	    dynamicID = dynamicID.substring(0,6);
 	    dynamicBtn = dynamicBtn.substring(0,9);
@@ -79,19 +82,20 @@ function callbackTen(results, status) {
     }
 }
 
-function moreInfo(index,id){
-//    console.log(placeArray[index].rating);
-/*
-    tagid = dynamicInfo + index;
-    console.log(document.getElementById(tagid));
-*/
+function moreInfo(index,id){    
     var element = document.getElementById(id);
 
-    if(element.style.display == 'none'){
-	element.style.display = 'block';
-    }
-    else{
-	element.style.display = 'none'; 
+    //reveal/hide
+    if(searched == true){
+	if(element.style.display == 'none'){
+	    element.style.display = 'block';
+	}
+	else{
+	    element.style.display = 'none'; 
+	}
+	element.value += "Tags: " + placeArray[index].types + "\n";
+	element.value += "Rating: " + placeArray[index].rating + "\n";
+	
     }
 //    dynamicInfo = dynamicInfo.substring(0,4);
 }
@@ -114,7 +118,7 @@ function changeValue(value){
     }
     for(var i = 0; i < 10; i++){
 	dynamicID += i;
-	document.getElementById(dynamicID).value = "";
+	document.getElementById(dynamicID).value = ""; //clears the field for the next search
 	dynamicID = dynamicID.substring(0,6);
     }
     for(var i = 0; i < 10; i++){
@@ -123,6 +127,7 @@ function changeValue(value){
     }
     
     printLocations();
+    searched = true;
 }
 
 function doClick(buttonName,e){
