@@ -8,7 +8,6 @@ var textRequest = {
 }; //default request object, searches for query in a 500m radius around marist
 var formattedAddress = [];
 var dynamicID = "output";
-var dynamicBtn = "outputbtn";
 var dynamicInfo = "info";
 var placeArray = [];
 var searched = false;
@@ -44,8 +43,11 @@ function printLocations(){
 function callbackTen(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 	for (var i = 0; i < 10; i++) {
+	    placeArray.pop();
+	}
+
+	for (var i = 0; i < 10; i++) {
 	    dynamicID += i;
-	    dynamicBtn += i; 
 
 	    document.getElementById(dynamicID).value += results[i].name + "\n";
 
@@ -77,7 +79,6 @@ function callbackTen(results, status) {
 
 
 	    dynamicID = dynamicID.substring(0,6);
-	    dynamicBtn = dynamicBtn.substring(0,9);
 	}
     }
 }
@@ -93,11 +94,11 @@ function moreInfo(index,id){
 	else{
 	    element.style.display = 'none'; 
 	}
+	element.value = "";
+
 	element.value += "Tags: " + placeArray[index].types + "\n";
-	element.value += "Rating: " + placeArray[index].rating + "\n";
-	
+	element.value += "Rating: " + placeArray[index].rating + "\n";	
     }
-//    dynamicInfo = dynamicInfo.substring(0,4);
 }
 
 //cuts off the NY, United States in the address, returns the address with out it
@@ -124,6 +125,14 @@ function changeValue(value){
     for(var i = 0; i < 10; i++){
 	dynamicID += i;
 	dynamicID = dynamicID.substring(0,6);
+    }
+
+    //close "more info" before showing new results
+    for(var i = 0; i < 10; i++){
+	dynamicInfo += i;
+	var element = document.getElementById(dynamicInfo);
+	element.style.display = 'none'; 
+	dynamicInfo = dynamicInfo.substring(0,4);
     }
     
     printLocations();
@@ -155,7 +164,7 @@ window.onload = function() {
     document.getElementById('input').onkeypress = function(e) {
 	doClick('button', e)
     };
-    for(var i = 0; i < 9; i++){
+    for(var i = 0; i < 10; i++){
 	dynamicInfo += i;
 	document.getElementById("info" + i).style.display = 'none';
 	dynamicInfo = dynamicInfo.substring(0,4);
