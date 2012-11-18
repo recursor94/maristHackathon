@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <title>Food App</title>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-
     <style>
     </style>
 
-    <script src="testcode.js">
+    <script src="code.js">
     </script>
   </head>
   <body>
@@ -18,7 +17,7 @@
     <!--<textarea rows="1" cols="10" id="input"></textarea> -->
     
     <form>
-      <input type="text"name = "textarea" id="input">
+      <input type="text" id="input">
     </form>
     
     <input  type="button"
@@ -27,45 +26,82 @@
 	        onClick="changeValue(input.value);"
 	        >
     <br>
-    10 Ten Results:
+    Top Ten Results:
+
+    <div id="testarea"></div>
 
     <br>
-    <textarea rows="22" cols="40" id="output" readonly></textarea> 
+    <textarea style="resize: none;" rows="4" cols="44" id="output0" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn0;" onClick="moreInfo(0,'info0')">
+    <div align="center">
+      <textarea style="resize: none;" rows="4" cols="44" id="info0" readonly></textarea>
+    </div>
+
     <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output0" readonly></textarea>
+    <textarea style="resize: none;" rows="4" cols="44" id="output1" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn1" onClick="moreInfo(1,'info1')">
+    <div align="center">
+      <textarea style="resize: none;" rows="4" cols="44" id="info1" readonly></textarea>
+    </div>
+
     <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output1" readonly></textarea>
+    <textarea style="resize: none;" rows="4" cols="44" id="output2" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn2" onClick="moreInfo(2,'info2')">
+    <div align="center">
+      <textarea style="resize: none;" rows="4" cols="44" id="info2" readonly></textarea>
+    </div>
+
     <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output2" readonly></textarea>
+    <textarea style="resize: none;" rows="4" cols="44" id="output3" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn3" onClick="moreInfo(3,'info3')">
+    <div align="center">    
+      <textarea style="resize: none;" rows="4" cols="44" id="info3" readonly></textarea>
+    </div>
+
     <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output3" readonly></textarea>
+    <textarea style="resize: none;" rows="4" cols="44" id="output4" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn4" onClick="moreInfo(4,'info4')"
+    <div align="center">
+      <textarea style="resize: none;" rows="4" cols="44" id="info4" readonly></textarea>
+    </div>
+
     <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output4" readonly></textarea>
+    <textarea style="resize: none;" rows="4" cols="44" id="output5" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn5" onClick="moreInfo(5,'info5')">
+    <div>
+      <textarea style="resize: none;" rows="4" cols="44" id="info5" readonly></textarea>
+    </div>
+
     <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output5" readonly></textarea>
+    <textarea style="resize: none;" rows="4" cols="44" id="output6" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn6" onClick="moreInfo(6,'info6')">
+    <div align="center">
+      <textarea style="resize: none;" rows="4" cols="44" id="info6" readonly></textarea>
+    </div>
+
     <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output6" readonly></textarea>
+    <textarea style="resize: none;" rows="4" cols="44" id="output7" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn7" onClick="moreInfo(7,'info7')">
+    <div align="center">
+      <textarea style="resize: none;" rows="4" cols="44" id="info7" readonly></textarea>
+    </div>
+
     <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output7" readonly></textarea>
-    <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output8" readonly></textarea>
-    <br>
-    <textarea style="resize: none;" rows="3" cols="44" id="output9" readonly></textarea>
-    <br>
+    <textarea style="resize: none;" rows="4" cols="44" id="output8" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn8" onClick="moreInfo(8,'info8')">
+    <div align="center">
+      <textarea style="resize: none;" rows="4" cols="44" id="info8" readonly></textarea>
+    </div>
     
-    <!--<input  type="button"
-	value="Print"
-	onClick="printLocations();"
-	>-->
+    <br>
+    <textarea style="resize: none;" rows="4" cols="44" id="output9" readonly></textarea>
+    <input type="button" value="Get more info" id="outputbtn9" onClick="moreInfo(9,'info9')">
+    <div align="center">    
+      <textarea style="resize: none;" rows="4" cols="44" id="info9" readonly></textarea>
+    </div>
 
-<!-- ommited for now
-     <br>
-     <textarea rows="22" cols="40" id="output" readonly></textarea> 
-     <input  type="button"
-	     value="Test"
-	     onClick="topRight();"
-	     >
--->
+    <br>
+
   </body>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script src="weather.js"></script>
