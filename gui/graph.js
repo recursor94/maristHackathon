@@ -34,8 +34,8 @@ function set_visible(index, yesorno) {
         plots[index] = {show: false};
     }
     else {
-        lines[index] = {show: true}
-        plots[index] = {show: true}
+        lines[index] = {show: true};
+        plots[index] = {show: true};
     }
 
     draw_graph();
