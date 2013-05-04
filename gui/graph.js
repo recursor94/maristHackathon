@@ -5,6 +5,18 @@
 
 /*whole function must be wrapped in a jquery document.ready
  *to avoid loading before the html */
+
+
+//trying to establish dynamic graph, making parameters into vars themselves
+var lines = new Array();
+var points = new Array();
+
+for(var i = 0; i < 10; i = i + 1) {
+
+    lines[i] = {show: true};
+    points[i] = {show: true};
+
+}
 $(document).ready( function () {
 $.plot (
     $("#placeholder"),
