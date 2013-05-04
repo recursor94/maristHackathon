@@ -2,7 +2,10 @@
  ** integer outputs, which are server info plus profit. */
 
 //written by Andrew Spano, uses flot.js and jquery.js
-alert("enter plot");
+
+/*whole function must be wrapped in a jquery document.ready
+ *to avoid loading before the html */
+$(document).ready( function () {
 $.plot (
     $("#placeholder"),
     [
@@ -22,3 +25,5 @@ $.plot (
         }
     ]
 );
+}
+                 );
