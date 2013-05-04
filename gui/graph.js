@@ -9,12 +9,12 @@
 
 //trying to establish dynamic graph, making parameters into vars themselves
 var lines = new Array();
-var points = new Array();
+var plots = new Array();
 
-for(var i = 0; i < 10; i = i + 1) {
+for(var i = 0; i < 13; i = i + 1) {
 
     lines[i] = {show: true};
-    points[i] = {show: true};
+    plots[i] = {show: true};
 
 }
 $(document).ready( function () {
@@ -24,24 +24,24 @@ $.plot (
         {
             label: "Demand in the United States",
             data: [ [0, 0], [1, 1], [2, 1], [3,2] ],
-            lines: {show: true},
-            points: {show: true}
+            lines: lines[0],
+            points: plots[0]
 
 
         },
         {
             label: "Demand in the European Union",
             data: [[0, 0], [1, 3], [2,5] [3, 8]],
-            lines: {show: true},
-            points: {show: true}
+            lines: lines[1],
+            points: plots[1]
          },
 
         {
 
             label: "Demand in the Asian Pacific",
             data: [[0, 0], [1, 10], [2,4], [3,9]],
-            lines: {show: true},
-            points: {show: true}
+            lines: lines[2],
+            points: plots[2]
 
         },
 
@@ -49,74 +49,74 @@ $.plot (
          {
              label: "Number of Web Servers in North America",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[3],
+             points: plots[3]
          },
 
          {
              label: "Number of Web Servers in the European Union",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[4],
+             points: plots[4]
 
          },
 
          {
              label: "Number of Web Servers in the Asian Pacific",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[5],
+             points: lines[5]
 
          },
 
          {
              label: "Number of Java Servers in the United States",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[6],
+             points: plots[6]
 
          },
          {
              label: "Number of Java Servers in the European Union",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[7],
+             points: plots[7]
 
          },
          {
              label: "Number of Java Servers in the Asian Pacific",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[8],
+             points: plots[8]
 
          },
          {
              label: "Number of Database Servers in the United States",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[9],
+             points: plots[9]
 
          },
          {
              label: "Number of Database Servers in the European Union",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[10],
+             points: plots[10]
 
          },
          {
              label: "Number of Database Servers in the Asian Pacific",
              data: [ [0, 0], [1, 4], [2, 15], [3,0] ],
-             lines: {show: true},
-             points: {show: true}   
+             lines: lines[11],
+             points: plots[11]
 
          },
 
          {
             label: "Profit",
             data: [ [0, 0], [1, 5.3], [2, 13.53], [3, 8.78] ],
-            lines: {show: true},
-            points: {show: true}   
+            lines: lines[12],
+            points: plots[12]
 
         }
           
