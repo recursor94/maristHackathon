@@ -20,10 +20,26 @@ for(var i = 0; i < 13; i = i + 1) {
     plots[i] = {show: true};
 
 }
-$(document).ready( function () {
+//$(document).ready( function () {
+  //  draw_graph();
+//}
+                 //);
+
+function update_data (index, dat) {
+    data[index] = dat;
+}
+function set_visible(index, yesorno) {
+    if(!yesorno) {
+        lines[index] = {show: false};
+        plots[index] = {show: false};
+    }
+    else {
+        lines[index] = {show: true}
+        plots[index] = {show: true}
+    }
+
     draw_graph();
 }
-                 );
 function draw_graph() {
     $.plot (
         $("#placeholder"),
@@ -70,7 +86,7 @@ function draw_graph() {
 
             {
                 label: "Number of Web Servers in the Asian Pacific",
-                data: data[5];
+                data: data[5],
                 lines: lines[5],
                 points: lines[5]
 
@@ -130,7 +146,5 @@ function draw_graph() {
         ]
     );
 
-    function update_data (index, dat) {
-        data[index] = dat;
-    }
+
 }
