@@ -2,9 +2,9 @@
  ** integer outputs, which are server info plus profit. */
 
 //written by Andrew Spano, uses flot.js and jquery.js
-
+alert("enter plot");
 $.plot (
-    $("#statusgraph"),
+    $("#placeholder"),
     [
         {
             label: "Demand per region",
